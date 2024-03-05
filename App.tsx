@@ -1,20 +1,48 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+import { TamaguiProvider, createFont, createTamagui } from "@tamagui/core";
+import "@tamagui/core/reset.css";
+
+import Onboarding from "./screens/Onboarding";
+
+import { config } from "@tamagui/config";
+
+const fontFace = {
+  normal: { normal: "Gilroy-Medium" },
+  bold: { normal: "Gilroy-Bold" },
+  300: { normal: "Gilroy-Light" },
+  700: { normal: "Gilroy-Bold" },
+};
+
+const headingFont = createFont({
+  size: config.fonts.heading.size,
+  lineHeight: config.fonts.heading.lineHeight,
+  weight: config.fonts.heading.weight,
+  letterSpacing: config.fonts.heading.letterSpacing,
+  face: fontFace,
+});
+
+const bodyFont = createFont({
+  size: config.fonts.body.size,
+  lineHeight: config.fonts.body.lineHeight,
+  weight: config.fonts.body.weight,
+  letterSpacing: config.fonts.body.letterSpacing,
+  face: fontFace,
+});
+
+const tamaguiConfig = createTamagui(config);
+
+type Conf = typeof tamaguiConfig;
+declare module "@tamagui/core" {
+  interface TamaguiCustomConfig extends Conf {}
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App = () => {
+  return (
+    <TamaguiProvider config={tamaguiConfig}>
+      {/* <Greetings /> */}
+      <Onboarding />
+    </TamaguiProvider>
+  );
+};
+export default App;

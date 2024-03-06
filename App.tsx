@@ -3,9 +3,8 @@ import React from "react";
 import { TamaguiProvider, createFont, createTamagui } from "@tamagui/core";
 import "@tamagui/core/reset.css";
 
-import Onboarding from "./screens/Onboarding";
-
 import { config } from "@tamagui/config";
+import Onboarding from "./screens/Onboarding";
 
 const fontFace = {
   normal: { normal: "Gilroy-Medium" },

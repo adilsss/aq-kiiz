@@ -4,7 +4,7 @@ import { TamaguiProvider, createFont, createTamagui } from "@tamagui/core";
 import "@tamagui/core/reset.css";
 
 import { config } from "@tamagui/config";
-import OptionChoosing from "./screens/OptionChoosing";
+import TakeAwayOptions from "./screens/TakeAwayOptions";
 
 const fontFace = {
   normal: { normal: "Gilroy-Medium" },
@@ -42,7 +42,8 @@ const App = () => {
       {/* <Greetings /> */}
       {/* <Onboarding /> */}
       {/* <RestaurantChoosing /> */}
-      <OptionChoosing />
+      {/* <OptionChoosing /> */}
+      <TakeAwayOptions />
     </TamaguiProvider>
   );
 };

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { SafeAreaView, ScrollView, View } from "react-native";
-import { XStack } from "tamagui";
+import { XStack, YStack } from "tamagui";
 import CategoryItem from "../../components/common/CategoryItem";
 import DeliveryTypeSwitcher from "../../components/common/DeliveryTypeSwitcher";
+import DishItem from "../../components/common/DishItem";
 import InputIconLeft from "../../components/common/InputIconLeft";
 import StoriesItem from "../../components/common/StoriesItem";
+import TakeAwayLocationItem from "../../components/common/TakeAwayLocationItem";
 import { categories } from "../../static_data/categories";
 import { stories } from "../../static_data/stories";
 import { styles } from "./styles";
@@ -19,6 +21,11 @@ const Main = () => {
           deliveryType={deliveryType}
           setDeliveryType={setDeliveryType}
         />
+        {deliveryType == "takeAway" && (
+          <View marginTop={5}>
+            <TakeAwayLocationItem />
+          </View>
+        )}
         <View style={styles.divider}></View>
         <InputIconLeft />
         <ScrollView horizontal={true} marginTop={40}>
@@ -40,6 +47,11 @@ const Main = () => {
               />
             ))}
           </XStack>
+        </ScrollView>
+        <ScrollView marginTop={56}>
+          <YStack>
+            <DishItem />
+          </YStack>
         </ScrollView>
       </View>
     </SafeAreaView>

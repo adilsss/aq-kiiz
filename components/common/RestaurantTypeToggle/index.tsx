@@ -4,10 +4,16 @@ import { Text, View } from "tamagui";
 import CafeToggle from "../../../assets/svg/cafeToggle";
 import RestaurantToggle from "../../../assets/svg/restaurantToggle";
 
-const RestaurantTypeToggle = ({ focused }) => {
+const RestaurantTypeToggle = ({ focused, isTooltip }) => {
   const [toggleValue, setToggleValue] = useState(false);
   return (
-    <View alignItems="center" marginTop={30}>
+    <View
+      alignItems="center"
+      padding={isTooltip ? 7 : 0}
+      backgroundColor={isTooltip ? "white" : "transparent"}
+      borderRadius={isTooltip ? 10 : 0}
+      top={25}
+    >
       <Toggle
         value={toggleValue}
         onPress={(newState) => setToggleValue(newState)}

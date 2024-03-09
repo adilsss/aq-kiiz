@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Animated, FlatList, useWindowDimensions, View } from "react-native";
 import { ExpandingDot } from "react-native-animated-pagination-dots";
@@ -23,6 +24,8 @@ const Onboarding = () => {
   const keyExtractor = React.useCallback((item: ItemProps) => item.img, []);
   let flatListRef = React.useRef<any>(null);
 
+  const { navigate } = useNavigation();
+
   const onViewRef = React.useRef(({ viewableItems }: any) => {
     setActiveIndex(viewableItems[0].index);
   });
@@ -33,6 +36,14 @@ const Onboarding = () => {
         index: activeIndex + 1,
         animated: true,
       });
+    }
+  };
+
+  const checkLastSlide = () => {
+    if (activeIndex !== 2) {
+      gotoNextPage();
+    } else {
+      navigate("RestaurantChoosing");
     }
   };
 
@@ -110,6 +121,7 @@ const Onboarding = () => {
           paddingHorizontal={30}
           paddingVertical={15}
           fontSize={20}
+          onPress={() => navigate("RestaurantChoosing")}
         >
           Пропустить
         </Button>
@@ -125,7 +137,7 @@ const Onboarding = () => {
           fontSize={20}
           height={54}
           paddingVertical={15}
-          onPress={() => gotoNextPage()}
+          onPress={() => checkLastSlide()}
         >
           Далее
         </Button>

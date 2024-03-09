@@ -5,12 +5,14 @@ import { View } from "@tamagui/core";
 import { LinearGradient } from "@tamagui/linear-gradient";
 import { StyleSheet } from "react-native";
 
+import { useNavigation } from "@react-navigation/native";
 import { YStack } from "tamagui";
 import SvgComponent from "../../assets/svg/entry-logo";
 import IconButton from "../../components/common/IconButton";
 import { languageSelectors } from "../../static_data/languageSelectors";
 
 const Greetings = () => {
+  const { navigate } = useNavigation();
   return (
     <View style={styles.top}>
       <LinearGradient
@@ -24,7 +26,11 @@ const Greetings = () => {
         <View style={styles.view}>
           <YStack space="$3">
             {languageSelectors.map((item) => (
-              <IconButton icon={item.emoji} text={item.text} />
+              <IconButton
+                propsFunction={() => navigate("Onboarding")}
+                icon={item.emoji}
+                text={item.text}
+              />
             ))}
           </YStack>
         </View>

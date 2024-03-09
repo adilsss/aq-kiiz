@@ -6,7 +6,6 @@ export const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 65,
     backgroundColor: "#F9F9F9",
-    paddingHorizontal: 18,
     height: "100%",
   },
   divider: {

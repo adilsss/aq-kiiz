@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { Button, Text, View } from "tamagui";
 import ArrowBack from "../../assets/svg/arrowBack";
@@ -24,6 +25,7 @@ const takeAwayCards = [
 
 const TakeAwayOptions = () => {
   const [active, setActive] = useState(null);
+  const { navigate } = useNavigation();
   return (
     <View style={styles.container} onPress={() => setActive(null)}>
       <View paddingHorizontal={18} width="110%">
@@ -63,6 +65,7 @@ const TakeAwayOptions = () => {
             fontSize={20}
             fontWeight="semi"
             backgroundColor="#FB631D"
+            onPress={() => navigate("Main")}
           >
             Начать заказ
           </Button>

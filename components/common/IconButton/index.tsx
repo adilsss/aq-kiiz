@@ -4,6 +4,7 @@ import { Button, Paragraph, Text, View, styled } from "tamagui";
 interface IconButtonProps {
   icon: string;
   text: string;
+  propsFunction: () => void;
 }
 
 const TButton = styled(Button, {
@@ -21,9 +22,14 @@ const TButton = styled(Button, {
   alignItems: "center",
 });
 
-const IconButton: React.FC<IconButtonProps> = ({ icon, text }) => {
+const IconButton: React.FC<IconButtonProps> = ({
+  icon,
+  text,
+  propsFunction,
+}) => {
   return (
     <TButton
+      onPress={() => propsFunction()}
       width="100%"
       pressStyle={{
         scale: 0.95,

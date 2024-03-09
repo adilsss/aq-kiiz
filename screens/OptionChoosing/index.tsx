@@ -13,7 +13,10 @@ const OptionChoosing = () => {
   return (
     <View style={styles.container}>
       <View style={styles.heading}>
-        <View style={styles.back}>
+        <View
+          style={styles.back}
+          onPress={() => navigate("RestaurantChoosing")}
+        >
           <ArrowBack />
         </View>
         <Text color="black" fontSize={25}>

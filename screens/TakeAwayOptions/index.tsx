@@ -30,7 +30,7 @@ const TakeAwayOptions = () => {
     <View style={styles.container} onPress={() => setActive(null)}>
       <View paddingHorizontal={18} width="110%">
         <View style={styles.heading}>
-          <View style={styles.back}>
+          <View style={styles.back} onPress={() => navigate("OptionChoosing")}>
             <ArrowBack />
           </View>
           <Text color="black" fontSize={25}>

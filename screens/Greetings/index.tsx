@@ -11,8 +11,15 @@ import SvgComponent from "../../assets/svg/entry-logo";
 import IconButton from "../../components/common/IconButton";
 import { languageSelectors } from "../../static_data/languageSelectors";
 
+import Animated, {
+  BounceInDown,
+  useSharedValue,
+} from "react-native-reanimated";
+
 const Greetings = () => {
   const { navigate } = useNavigation();
+  const width = useSharedValue(100);
+
   return (
     <View style={styles.top}>
       <LinearGradient
@@ -20,20 +27,29 @@ const Greetings = () => {
         style={styles.top}
         colors={["#FF8933", "#FF6B00", "#FFB800"]}
       >
-        <View marginBottom={120}>
-          <SvgComponent />
-        </View>
-        <View style={styles.view}>
-          <YStack space="$3">
-            {languageSelectors.map((item) => (
-              <IconButton
-                propsFunction={() => navigate("Onboarding")}
-                icon={item.emoji}
-                text={item.text}
-              />
-            ))}
-          </YStack>
-        </View>
+        <Animated.View entering={BounceInDown} exiting={BounceInDown}>
+          <View marginBottom={120}>
+            <SvgComponent />
+          </View>
+        </Animated.View>
+
+        <Animated.View
+          style={styles.view}
+          entering={BounceInDown.delay(1000)}
+          exiting={BounceInDown}
+        >
+          <View style={styles.view}>
+            <YStack space="$3">
+              {languageSelectors.map((item) => (
+                <IconButton
+                  propsFunction={() => navigate("Onboarding")}
+                  icon={item.emoji}
+                  text={item.text}
+                />
+              ))}
+            </YStack>
+          </View>
+        </Animated.View>
       </LinearGradient>
     </View>
   );

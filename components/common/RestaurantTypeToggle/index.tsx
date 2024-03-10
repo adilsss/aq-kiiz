@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import Toggle from "react-native-toggle-element";
-import { Text, View } from "tamagui";
+import { Stack, Text } from "tamagui";
 import CafeToggle from "../../../assets/svg/cafeToggle";
 import RestaurantToggle from "../../../assets/svg/restaurantToggle";
 
 const RestaurantTypeToggle = ({ focused, isTooltip }) => {
   const [toggleValue, setToggleValue] = useState(false);
   return (
-    <View
+    <Stack
       alignItems="center"
+      zIndex={9999}
       padding={isTooltip ? 7 : 0}
-      backgroundColor={isTooltip ? "white" : "transparent"}
+      backgroundColor={"white"}
       borderRadius={isTooltip ? 10 : 0}
       top={25}
     >
@@ -41,7 +42,7 @@ const RestaurantTypeToggle = ({ focused, isTooltip }) => {
       >
         Рестораны
       </Text>
-    </View>
+    </Stack>
   );
 };
 

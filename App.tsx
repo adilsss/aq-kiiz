@@ -1,12 +1,21 @@
 import React, { useState } from "react";
 
-import { TamaguiProvider, createFont, createTamagui } from "@tamagui/core";
+import {
+  Stack,
+  TamaguiProvider,
+  View,
+  createFont,
+  createTamagui,
+} from "@tamagui/core";
 import "@tamagui/core/reset.css";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { config } from "@tamagui/config";
+import { Dimensions, TouchableOpacity } from "react-native";
 import { TourGuideProvider } from "rn-tourguide";
+import { Text, YStack } from "tamagui";
+import CloseIcon from "./assets/svg/closeIcon";
 import ProfileIcon from "./assets/svg/profileIcon";
 import RestaurantTypeToggle from "./components/common/RestaurantTypeToggle";
 import TooltipComponent from "./components/common/ToolTipComponent";
@@ -54,6 +63,9 @@ const Tab = createBottomTabNavigator();
 const App = () => {
   const [tooltipType, setTooltipType] = useState("Main");
   const [isTooltip, setIsTooltip] = useState(true);
+  const [isTooltipMain, setIsTooltipMain] = useState(false);
+  const windowWidth = Dimensions.get("window").width;
+  const windowHeight = Dimensions.get("window").height;
 
   return (
     <TourGuideProvider
@@ -73,15 +85,18 @@ const App = () => {
             screenOptions={{
               headerShown: false,
               header: () => null,
-              contentStyle: { backgroundColor: "white" },
+              // headerBackgroundContainerStyle:
               tabBarActiveTintColor: "#FB631D",
               tabBarInactiveTintColor: "#000",
               tabBarStyle: {
                 height: 90,
-                borderWidth: 2,
+                borderWidth: 0,
                 paddingHorizontal: 60,
+                shadowOpacity: 0.0,
               },
-              tabBarItemStyle: {},
+              // tabBarItemStyle: {
+              //   // backgroundColor: "red",
+              // },
             }}
             tabBarOptions={{
               labelStyle: {
@@ -149,14 +164,19 @@ const App = () => {
               name="Main"
               component={() => (
                 <Main
-                  isTooltip={isTooltip}
-                  setIsTooltip={setIsTooltip}
+                  setIsTooltipMain={(value) => {
+                    setIsTooltipMain(value);
+                  }}
                   tooltipType={"Main"}
                   setTooltipType={setTooltipType}
                 />
               )}
               options={{
                 title: "",
+                tabBarItemStyle: {},
+                tabBarBadgeStyle: {
+                  zIndex: 999999,
+                },
                 tabBarIcon: ({ size, focused, color }) => {
                   return (
                     <>
@@ -180,7 +200,7 @@ const App = () => {
                         />
                       )} */}
                       <RestaurantTypeToggle
-                        isTooltip={isTooltip}
+                        isTooltip={isTooltipMain}
                         focused={focused}
                       />
                     </>
@@ -200,6 +220,51 @@ const App = () => {
             />
           </Tab.Navigator>
         </NavigationContainer>
+        {isTooltipMain && (
+          <Stack
+            position="absolute"
+            overflow="hidden"
+            backgroundColor={"#7d7d7d"}
+            opacity={0.8}
+            height={windowHeight - 90}
+            width={windowWidth}
+            zIndex={2}
+          >
+            <YStack height={"100%"} justifyContent="flex-end">
+              <TouchableOpacity onPress={() => setIsTooltipMain(false)}>
+                <View alignItems="flex-end" width="100%">
+                  <View
+                    borderRadius={40}
+                    backgroundColor="#00000045"
+                    height={44}
+                    alignItems="center"
+                    justifyContent="center"
+                    maxWidth={141}
+                    width="100%"
+                    flexDirection="row"
+                    paddingLeft={10}
+                    paddingRight={10}
+                    bottom={10}
+                  >
+                    <Text
+                      color="white"
+                      fontSize={20}
+                      fontWeight="bold"
+                      marginRight={13}
+                    >
+                      Закрыть
+                    </Text>
+                    <CloseIcon />
+                  </View>
+                </View>
+              </TouchableOpacity>
+              <Text color="white" fontSize={20} fontWeight="bold">
+                Нажмите сюда для того что бы переключиться в меню нашей
+                кондитерской
+              </Text>
+            </YStack>
+          </Stack>
+        )}
       </TamaguiProvider>
     </TourGuideProvider>
   );

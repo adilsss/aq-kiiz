@@ -1,7 +1,16 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Animated, FlatList, useWindowDimensions, View } from "react-native";
+import {
+  FlatList,
+  Animated as RNAnimated,
+  useWindowDimensions,
+  View,
+} from "react-native";
 import { ExpandingDot } from "react-native-animated-pagination-dots";
+import Animated, {
+  RollInRight,
+  RotateInDownRight,
+} from "react-native-reanimated";
 import { Button, Image, Text } from "tamagui";
 import QuotesNext from "../../assets/svg/quotes-next";
 import { INTRO_DATA } from "../../static_data/onboarding";
@@ -14,13 +23,14 @@ interface ItemProps {
   img: any;
   width: number;
   height: number;
+  index: number;
 }
 
 const Onboarding = () => {
   const [activeIndex, setActiveIndex] = React.useState(0);
 
   const { width } = useWindowDimensions();
-  const scrollX = React.useRef(new Animated.Value(0)).current;
+  const scrollX = React.useRef(new RNAnimated.Value(0)).current;
   const keyExtractor = React.useCallback((item: ItemProps) => item.img, []);
   let flatListRef = React.useRef<any>(null);
 
@@ -47,17 +57,23 @@ const Onboarding = () => {
     }
   };
 
-  const renderItem = React.useCallback(
-    ({ item }: { item: ItemProps }) => {
+  const RenderItem = React.useCallback(
+    ({ item, index }: { item: ItemProps }) => {
       return (
-        <View style={[styles.container80, { width: width }]}>
-          <View style={styles.imageContainer}>
-            <Image
-              source={item.img}
-              style={{ width: item.width, height: item.height }}
-            />
+        <Animated.View
+          entering={RollInRight}
+          exiting={RotateInDownRight}
+          style={{ transform: [{ rotate: "360deg" }] }}
+        >
+          <View style={[styles.container80, { width: width }]}>
+            <View style={styles.imageContainer}>
+              <Image
+                source={item.img}
+                style={{ width: item.width, height: item.height }}
+              />
+            </View>
           </View>
-        </View>
+        </Animated.View>
       );
     },
     [width]
@@ -79,13 +95,14 @@ const Onboarding = () => {
           />
         </View>
       </View>
+
       <FlatList
         ref={flatListRef}
         data={INTRO_DATA}
         onViewableItemsChanged={onViewRef.current}
         keyExtractor={keyExtractor}
         showsHorizontalScrollIndicator={false}
-        onScroll={Animated.event(
+        onScroll={RNAnimated.event(
           [{ nativeEvent: { contentOffset: { x: scrollX } } }],
           {
             useNativeDriver: false,
@@ -96,8 +113,11 @@ const Onboarding = () => {
         horizontal
         decelerationRate={"normal"}
         scrollEventThrottle={16}
-        renderItem={renderItem}
+        renderItem={({ item, index }) => (
+          <RenderItem item={item} index={index} />
+        )}
       />
+
       <View paddingHorizontal={28} marginBottom={67}>
         <View>
           <Text color="black" fontSize={25} fontWeight="bold">

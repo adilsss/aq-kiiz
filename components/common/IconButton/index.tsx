@@ -49,7 +49,12 @@ const IconButton: React.FC<IconButtonProps> = ({
           textAlign: "center",
         }}
       >
-        <Text width={100} fontSize={20} fontWeight="bold">
+        <Text
+          fontFamily="Gilroy-Bold"
+          width={100}
+          fontSize={20}
+          fontWeight="bold"
+        >
           {text}
         </Text>
       </View>

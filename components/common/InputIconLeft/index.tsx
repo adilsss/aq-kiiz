@@ -19,6 +19,7 @@ const InputIconLeft = () => {
         borderRadius={100}
         paddingLeft={54}
         height={50}
+        fontFamily="Gilroy-Medium"
       />
     </View>
   );

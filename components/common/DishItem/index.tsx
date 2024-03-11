@@ -4,13 +4,20 @@ import { Button, Text, View, XStack } from "tamagui";
 import HeartIcon from "../../../assets/svg/heartIcon";
 import { styles } from "./styles";
 
-const DishItem = () => {
+interface DishItem {
+  title: string;
+  descr: string;
+  price: number;
+  img: any;
+}
+
+const DishItem: React.FC<DishItem> = ({ title, descr, price, img }) => {
   return (
     <XStack style={styles.container}>
       <View style={styles.imgBlock}>
         <ImageBackground
           style={styles.img}
-          source={require("../../../assets/img/dishes/item1.png")}
+          source={img}
           resizeMode="cover"
         ></ImageBackground>
         <View style={styles.like}>
@@ -18,11 +25,17 @@ const DishItem = () => {
         </View>
       </View>
       <View style={styles.infoCard}>
-        <Text fontSize={20} color="black">
-          Плов Свадебный
+        <Text fontSize={20} color="black" fontFamily="Gilroy-Medium">
+          {title}
         </Text>
-        <Text maxWidth={175} fontSize={11} color="#C1C1C1" marginTop={7}>
-          Легендарный сытный плов из риса твердого сорта лазер с говядиной
+        <Text
+          maxWidth={175}
+          fontSize={11}
+          color="#C1C1C1"
+          marginTop={7}
+          fontFamily="Gilroy-Medium"
+        >
+          {descr}
         </Text>
         <XStack
           marginTop={10}
@@ -31,11 +44,14 @@ const DishItem = () => {
           justifyContent="space-between"
           width="60%"
         >
-          <Text fontSize={20} color="black">
-            2598 ₸
+          <Text fontSize={20} color="black" fontFamily="Gilroy-Medium">
+            {price} ₸
           </Text>
           <Button
+            fontFamily="Gilroy-Medium"
             backgroundColor="white"
+            maxWidth={100}
+            paddingHorizontal={12}
             borderWidth={1}
             borderColor="#FB631D"
             color="#FB631D"

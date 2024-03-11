@@ -37,17 +37,22 @@ const TakeAwayCard: React.FC<TakeAwayCardProps> = ({
         <Image source={logo} style={{ width: 60, height: 60 }} />
         <View style={styles.info}>
           <View style={styles.title}>
-            <Text color="black" fontSize={20}>
+            <Text color="black" fontSize={20} fontFamily="Gilroy-Medium">
               {title}
             </Text>
             <View style={styles.checkIcon}>{isActive && <CheckedIcon />}</View>
           </View>
           <View style={styles.bottomTxt}>
-            <Text color="black" fontSize={15}>
+            <Text color="black" fontSize={15} fontFamily="Gilroy-Light">
               {descr}
             </Text>
 
-            <Text color="#FB631D" fontSize={13} marginRight={7}>
+            <Text
+              color="#FB631D"
+              fontSize={13}
+              marginRight={7}
+              fontFamily="Gilroy-Medium"
+            >
               {distance} км
             </Text>
           </View>
@@ -65,6 +70,7 @@ const TakeAwayCard: React.FC<TakeAwayCardProps> = ({
                 fontWeight="bold"
                 marginTop={7}
                 marginLeft={9}
+                fontFamily="Gilroy-Bold"
               >
                 {item.title}
               </Text>

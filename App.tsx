@@ -1,18 +1,13 @@
 import React, { useState } from "react";
 
-import {
-  Stack,
-  TamaguiProvider,
-  View,
-  createFont,
-  createTamagui,
-} from "@tamagui/core";
+import { Stack, TamaguiProvider, View, createTamagui } from "@tamagui/core";
 import "@tamagui/core/reset.css";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { config } from "@tamagui/config";
-import { Dimensions, TouchableOpacity } from "react-native";
+import { useFonts } from "expo-font";
+import { Dimensions, LogBox, TouchableOpacity } from "react-native";
 import { TourGuideProvider } from "rn-tourguide";
 import { Text, YStack } from "tamagui";
 import CloseIcon from "./assets/svg/closeIcon";
@@ -28,28 +23,31 @@ import Profile from "./screens/Profile";
 import RestaurantChoosing from "./screens/RestaurantChoosing";
 import TakeAwayOptions from "./screens/TakeAwayOptions";
 
-const fontFace = {
-  normal: { normal: "Gilroy-Medium" },
-  bold: { normal: "Gilroy-Bold" },
-  300: { normal: "Gilroy-Light" },
-  700: { normal: "Gilroy-Bold" },
-};
+LogBox.ignoreLogs(["Warning: ..."]); // Ignore log notification by message
+LogBox.ignoreAllLogs(); //Ignore all log notifications
 
-const headingFont = createFont({
-  size: config.fonts.heading.size,
-  lineHeight: config.fonts.heading.lineHeight,
-  weight: config.fonts.heading.weight,
-  letterSpacing: config.fonts.heading.letterSpacing,
-  face: fontFace,
-});
+// const fontFace = {
+//   normal: { normal: "Gilroy-Medium" },
+//   bold: { normal: "Gilroy-Bold" },
+//   300: { normal: "Gilroy-Light" },
+//   700: { normal: "Gilroy-Bold" },
+// };
 
-const bodyFont = createFont({
-  size: config.fonts.body.size,
-  lineHeight: config.fonts.body.lineHeight,
-  weight: config.fonts.body.weight,
-  letterSpacing: config.fonts.body.letterSpacing,
-  face: fontFace,
-});
+// const headingFont = createFont({
+//   size: config.fonts.heading.size,
+//   lineHeight: config.fonts.heading.lineHeight,
+//   weight: config.fonts.heading.weight,
+//   letterSpacing: config.fonts.heading.letterSpacing,
+//   face: fontFace,
+// });
+
+// const bodyFont = createFont({
+//   size: config.fonts.body.size,
+//   lineHeight: config.fonts.body.lineHeight,
+//   weight: config.fonts.body.weight,
+//   letterSpacing: config.fonts.body.letterSpacing,
+//   face: fontFace,
+// });
 
 const tamaguiConfig = createTamagui(config);
 
@@ -66,6 +64,13 @@ const App = () => {
   const [isTooltipMain, setIsTooltipMain] = useState(false);
   const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
+
+  const [fontsLoaded] = useFonts({
+    "Gropled-Bold": require("./assets/fonts/Gropled-Bold.otf"),
+    "Gilroy-Bold": require("./assets/fonts/Gilroy-Bold.ttf"),
+    "Gilroy-Medium": require("./assets/fonts/Gilroy-Medium.ttf"),
+    "Gilroy-Light": require("./assets/fonts/Gilroy-Light.ttf"),
+  });
 
   return (
     <TourGuideProvider

@@ -120,10 +120,23 @@ const Onboarding = () => {
 
       <View paddingHorizontal={28} marginBottom={67}>
         <View>
-          <Text color="black" fontSize={25} fontWeight="bold">
+          <Text
+            color="black"
+            fontSize={25}
+            fontWeight="bold"
+            fontFamily="Gropled-Bold"
+            textAlign="center"
+          >
             {INTRO_DATA[activeIndex].title}
           </Text>
-          <Text color="black" fontSize={20} textAlign="center" mt={22}>
+          <Text
+            fontFamily="Gilroy-Light"
+            color="black"
+            fontWeight="400"
+            fontSize={20}
+            textAlign="center"
+            mt={22}
+          >
             {INTRO_DATA[activeIndex].description}
           </Text>
         </View>
@@ -135,6 +148,7 @@ const Onboarding = () => {
             backgroundColor: "#FFFFFF3D",
             borderWidth: 0,
           }}
+          fontFamily="Gilroy-Medium"
           transparent={true}
           color="#FB631D"
           height={54}
@@ -151,6 +165,7 @@ const Onboarding = () => {
             backgroundColor: "#FB631D",
             borderWidth: 0,
           }}
+          fontFamily="Gilroy-Medium"
           iconAfter={QuotesNext}
           paddingHorizontal={30}
           backgroundColor="#FB631D"

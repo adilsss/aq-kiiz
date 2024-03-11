@@ -1,6 +1,6 @@
 export const stories = [
   {
-    title: "15% Скидка именинникам",
+    title: "15% Скидка\nименинникам",
     src: require("../../assets/img/stories/item1.png"),
   },
   {

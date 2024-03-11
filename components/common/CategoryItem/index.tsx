@@ -27,7 +27,12 @@ const CategoryItem: React.FC<CategoryItemProps> = ({
           resizeMode="contain"
         ></ImageBackground>
       </View>
-      <Text color={isActive ? "#FB631D" : "black"} marginTop={14} fontSize={20}>
+      <Text
+        fontFamily="Gilroy-Medium"
+        color={isActive ? "#FB631D" : "black"}
+        marginTop={14}
+        fontSize={20}
+      >
         {title}
       </Text>
     </YStack>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ScrollView, View } from "react-native";
-import { XStack, YStack } from "tamagui";
+import { Text, XStack, YStack } from "tamagui";
 import CategoryItem from "../../components/common/CategoryItem";
 import DeliveryTypeSwitcher from "../../components/common/DeliveryTypeSwitcher";
 import DishItem from "../../components/common/DishItem";
@@ -8,19 +8,13 @@ import InputIconLeft from "../../components/common/InputIconLeft";
 import StoriesItem from "../../components/common/StoriesItem";
 import TakeAwayLocationItem from "../../components/common/TakeAwayLocationItem";
 import { categories } from "../../static_data/categories";
+import { dishes } from "../../static_data/dishes";
 import { stories } from "../../static_data/stories";
 import { styles } from "./styles";
 
 const Main = ({ setTooltipType, tooltipType, setIsTooltipMain }) => {
   const [deliveryType, setDeliveryType] = useState("delivery");
   const [activeCategory, setactiveCategory] = useState(0);
-  // const [isTooltip, setIsTooltip] = useState(true);
-
-  // useMemo(() => {
-  //   if (!isTooltipMain) {
-  //     setIsTooltipMain(true);
-  //   }
-  // }, [isTooltipMain]);
 
   return (
     <ScrollView style={styles.container} position="relative">
@@ -58,7 +52,34 @@ const Main = ({ setTooltipType, tooltipType, setIsTooltipMain }) => {
         </ScrollView>
         <ScrollView marginTop={56}>
           <YStack>
-            <DishItem />
+            {dishes.map((item, idx) => (
+              <>
+                {idx > 0 && (
+                  <Text
+                    marginBottom={22}
+                    fontFamily="Gropled-Bold"
+                    color="black"
+                    fontSize={25}
+                  >
+                    {item.category}
+                  </Text>
+                )}
+
+                <YStack gap={14}>
+                  {item.items.map((dish) => (
+                    <DishItem
+                      title={dish.title}
+                      descr={dish.descr}
+                      price={dish.price}
+                      img={dish.img}
+                    />
+                  ))}
+                </YStack>
+                {idx !== dishes.length - 1 && (
+                  <View style={styles.divider}></View>
+                )}
+              </>
+            ))}
           </YStack>
         </ScrollView>
       </View>

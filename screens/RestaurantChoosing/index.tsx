@@ -28,7 +28,12 @@ const RestaurantChoosing = ({ setTooltipType }) => {
   const navigation = useNavigation();
   return (
     <View style={styles.top}>
-      <Text color="black" fontSize={25} marginBottom={33}>
+      <Text
+        color="black"
+        fontSize={25}
+        marginBottom={33}
+        fontFamily="Gropled-Bold"
+      >
         Выберите заведение
       </Text>
       <TourGuideZone
@@ -46,7 +51,7 @@ const RestaurantChoosing = ({ setTooltipType }) => {
           }}
         >
           <View style={styles.cardDescr}>
-            <Text color="black" fontSize={20}>
+            <Text color="black" fontSize={20} fontFamily="Gilroy-Light">
               Рестораны и кафе
             </Text>
             <View style={styles.cardDescrLogo}>
@@ -81,7 +86,7 @@ const RestaurantChoosing = ({ setTooltipType }) => {
       >
         <View style={styles.card}>
           <View style={styles.cardDescr}>
-            <Text color="black" fontSize={20}>
+            <Text color="black" fontSize={20} fontFamily="Gilroy-Light">
               Кондитерская
             </Text>
             <View style={styles.cardDescrLogo}>

@@ -20,6 +20,7 @@ const TooltipComponentRest = ({ isFirstStep, handleNext }) => {
                 fontSize={20}
                 fontWeight="bold"
                 marginRight={13}
+                fontFamily="Gilroy-Medium"
               >
                 Перейдите в меню наших ресторанов и кафе, и насладитесь
                 изысканными блюдами восточной и европейской кухни
@@ -32,6 +33,8 @@ const TooltipComponentRest = ({ isFirstStep, handleNext }) => {
               marginTop={40}
               backgroundColor="black"
               onPress={() => handleNext()}
+              fontFamily="Gilroy-Medium"
+              fontWeight="600"
             >
               Далее
             </Button>
@@ -53,6 +56,7 @@ const TooltipComponentRest = ({ isFirstStep, handleNext }) => {
                 fontSize={20}
                 fontWeight="bold"
                 marginRight={13}
+                fontFamily="Gilroy-Medium"
               >
                 Перейдите в меню нашей кондитерской и насладитесь нашими
                 десертами и другой продукцией!
@@ -65,6 +69,8 @@ const TooltipComponentRest = ({ isFirstStep, handleNext }) => {
               marginTop={40}
               backgroundColor="#FB631D"
               onPress={() => stop()}
+              fontFamily="Gilroy-Medium"
+              fontWeight="600"
             >
               Закрыть
             </Button>

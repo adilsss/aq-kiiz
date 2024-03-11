@@ -12,12 +12,12 @@ const TakeAwayLocationItem = () => {
         />
         <View style={styles.info}>
           <View style={styles.title}>
-            <Text color="black" fontSize={20}>
+            <Text color="black" fontSize={20} fontFamily="Gilroy-Medium">
               Aq Anyz
             </Text>
           </View>
           <View style={styles.bottomTxt}>
-            <Text color="black" fontSize={15}>
+            <Text color="black" fontSize={15} fontFamily="Gilroy-Light">
               Семейный ресторан
             </Text>
           </View>
@@ -26,11 +26,13 @@ const TakeAwayLocationItem = () => {
       <Button
         backgroundColor="#FFE7DC"
         color="#FB631D"
+        height={37}
         pressStyle={{
           scale: 0.95,
           backgroundColor: "white",
           borderWidth: 0,
         }}
+        fontFamily="Gilroy-Medium"
       >
         Изменить
       </Button>

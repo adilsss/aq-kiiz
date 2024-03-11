@@ -11,9 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.adsad.aqkiiz"
@@ -33,7 +31,17 @@
       }
     },
     "plugins": [
-      "expo-font"
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/Gropled-Bold.otf",
+            "./assets/fonts/Gilroy-Bold.ttf",
+            "./assets/fonts/Gilroy-Medium.ttf",
+            "./assets/fonts/Gilroy-Light.ttf"
+          ]
+        }
+      ]
     ]
   }
 }

@@ -25,6 +25,7 @@ const DeliveryTypeSwitcher: React.FC<DeliveryTypeSwitcherProps> = ({
           color={deliveryType == "delivery" ? "white" : "black"}
           fontSize={20}
           whiteSpace="wrap"
+          fontFamily="Gilroy-Medium"
         >
           Доставка
         </Text>
@@ -41,6 +42,7 @@ const DeliveryTypeSwitcher: React.FC<DeliveryTypeSwitcherProps> = ({
           color={deliveryType == "takeAway" ? "white" : "black"}
           fontSize={20}
           whiteSpace="nowrap"
+          fontFamily="Gilroy-Medium"
         >
           Самовывоз
         </Text>

@@ -15,7 +15,12 @@ const DeliveryOptionButton: React.FC<DeliveryOptionButtonProps> = ({
     <View>
       <View style={styles.deliveryOption}>
         {icon}
-        <Text marginTop={20} fontSize={20} color="black">
+        <Text
+          marginTop={20}
+          fontSize={20}
+          color="black"
+          fontFamily="Gilroy-Medium"
+        >
           {text}
         </Text>
       </View>

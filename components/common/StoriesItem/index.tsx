@@ -22,7 +22,7 @@ const StoriesItem: React.FC<StoriesItemProps> = ({ img, title }) => {
         style={styles.innerContainer}
       >
         <View paddingHorizontal={10} marginBottom={5}>
-          <Text fontSize={16} fontWeight="bold">
+          <Text fontSize={17} fontWeight="bold" fontFamily="Gropled-Bold">
             {title}
           </Text>
         </View>

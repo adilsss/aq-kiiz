@@ -11,7 +11,7 @@ import { styles } from "./styles";
 const OptionChoosing = () => {
   const { navigate } = useNavigation();
   return (
-    <View style={styles.container}>
+    <View style={styles.container} paddingBottom={250}>
       <View style={styles.heading}>
         <View
           style={styles.back}
@@ -19,7 +19,7 @@ const OptionChoosing = () => {
         >
           <ArrowBack />
         </View>
-        <Text color="black" fontSize={25}>
+        <Text color="black" fontSize={25} fontFamily="Gropled-Bold">
           Выберите опцию
         </Text>
       </View>

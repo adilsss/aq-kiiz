@@ -33,7 +33,7 @@ const TakeAwayOptions = () => {
           <View style={styles.back} onPress={() => navigate("OptionChoosing")}>
             <ArrowBack />
           </View>
-          <Text color="black" fontSize={25}>
+          <Text color="black" fontSize={25} fontFamily="Gropled-Bold">
             Выберите филиал
           </Text>
         </View>
@@ -63,9 +63,10 @@ const TakeAwayOptions = () => {
               borderWidth: 0,
             }}
             fontSize={20}
-            fontWeight="semi"
+            height={64}
             backgroundColor="#FB631D"
             onPress={() => navigate("Main")}
+            fontFamily="Gilroy-Bold"
           >
             Начать заказ
           </Button>
